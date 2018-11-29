@@ -27,7 +27,7 @@ while number > 0:
 print(max)
 
 print('\n\n\n')
-# Решение с применением арифметики и цикла while
+# Решение с применением цикла for и доступа к строке
 number = input('Введите число:')
 max = 0
 for i in number:
