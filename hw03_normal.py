@@ -1,6 +1,7 @@
 __author__ = 'Савельев А. С.'
 
 import random
+import math
 
 # Задание-1:
 # Напишите функцию, возвращающую ряд Фибоначчи с n-элемента до m-элемента.
@@ -67,11 +68,16 @@ def func(x):
 a = []
 for i in range(20):
 	a.append(random.randint(-100, 100))
+
+print("\n\nЗадание-3:")
 print(a)
 
 b = list(filter(func, a))
+print("\nОтфильтруем все отрицательные числа и нули.")
+print("\nРезультат работы стандартной функции filter:")
 print(b)
 
+print("\nРезультат работы собственной реализации функции filter:")
 c = list(my_filter(func, a))
 print(c)
 
@@ -80,3 +86,50 @@ print(c)
 # Даны четыре точки А1(х1, у1), А2(x2 ,у2), А3(x3 , у3), А4(х4, у4).
 # Определить, будут ли они вершинами параллелограмма.
 
+
+def isParall(a, b, c, d):
+    p1 = False
+    p2 = False
+    
+    ab = math.sqrt((b[0] - a[0])**2 + (b[1] - a[1])**2)
+    cb = math.sqrt((b[0] - c[0])**2 + (b[1] - c[1])**2)
+    cd = math.sqrt((d[0] - c[0])**2 + (d[1] - c[1])**2)
+    ad = math.sqrt((d[0] - a[0])**2 + (d[1] - a[1])**2)
+    
+    if ab == cd and cb == ad:
+        p1 = True
+    else:
+        pass
+    
+    hO1 = ((a[0] + c[0])/2, (a[1] + c[1])/2)
+    hO2 = ((b[0] + d[0])/2, (b[1] + d[1])/2)
+    
+    if hO1 == hO2:
+        p2 = True
+    else:
+        pass
+
+    if p1 and p2:
+        return True
+    else:
+        return False
+
+
+A1, A2, A3, A4 = (2, 3), (0, 2), (4, 1), (6, 2)
+
+
+print("\n\nЗадание-4:")
+result = isParall(A1, A2, A3, A4)
+
+if (result == True):
+	print("\nВершины {}, {}, {}, {} образуют параллелограмм".format(A1, A2, A3, A4))
+else:
+	print("\nВершины {}, {}, {}, {} не образуют параллелограмм".format(A1, A2, A3, A4))
+
+A1, A2, A3, A4 = (2, 3), (0, 2), (4, 1), (6, 1)
+result = isParall(A1, A2, A3, A4)
+
+if (result == True):
+	print("\nВершины {}, {}, {}, {} образуют параллелограмм".format(A1, A2, A3, A4))
+else:
+	print("\nВершины {}, {}, {}, {} не образуют параллелограмм".format(A1, A2, A3, A4))
